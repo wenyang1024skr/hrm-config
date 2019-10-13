@@ -7,6 +7,9 @@ eureka:
     instance-id: hrm-fastdfs-service  #指定服务的id
 server:
   port: 2050
+  max-http-header-size: 102400000
+  tomcat:
+    max-http-header-size: 102400000
 spring:
   application:
     name: hrm-fastdfs-service
