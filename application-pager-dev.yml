@@ -1,0 +1,44 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1010/eureka/ #注册中心地址 
+  instance:
+    prefer-ip-address: true #使用ip地址注册
+    instance-id: hrm-pager-service  #指定服务的id
+server:
+  port: 2070
+spring:
+  application:
+    name: hrm-pager-service
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql:///hrm-page
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis-plus:
+  mapper-locations: classpath:cn/itsource/hrm/mapper/*Mapper.xml
+  type-aliases-package: cn.itsource.hrm.domain,cn.itsource.hrm.query
+  global-config:
+    db-column-underline: false
+feign:
+  hystrix:
+    enabled: true #开启熔断支持
+  client:
+    config:
+      remote-service:           #服务名，填写default为所有服务
+        connectTimeout: 30000
+        readTimeout: 30000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+rabbitmq:
+  host: 127.0.0.1
+  port: 5672
+  username: guest
+  password: guest
+  virtualHost: /
