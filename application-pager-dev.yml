@@ -17,8 +17,8 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 mybatis-plus:
-  mapper-locations: classpath:cn/itsource/hrm/mapper/*Mapper.xml
-  type-aliases-package: cn.itsource.hrm.domain,cn.itsource.hrm.query
+  mapper-locations: classpath:cn/yangcode/hrm/mapper/*Mapper.xml
+  type-aliases-package: cn.yangcode.hrm.domain,cn.yangcode.hrm.query
   global-config:
     db-column-underline: false
 feign:
