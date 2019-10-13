@@ -1,0 +1,41 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1010/eureka/ #注册中心地址 
+  instance:
+    prefer-ip-address: true #使用ip地址注册
+    instance-id: hrm-nginx-proxy-service  #指定服务的id
+server:
+  port: 2070
+  max-http-header-size: 102400000
+  tomcat:
+    max-http-header-size: 102400000
+
+spring:
+  application:
+    name: hrm-nginx-proxy-service
+  rabbitmq:
+    listener:
+      simple:
+        acknowledge-mode: manual
+feign:
+  hystrix:
+    enabled: true #开启熔断支持
+  client:
+    config:
+      remote-service:           #服务名，填写default为所有服务
+        connectTimeout: 30000
+        readTimeout: 30000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 30000
+rabbitmq:
+  host: 127.0.0.1
+  port: 5672
+  username: guest
+  password: guest
+  virtualHost: /
